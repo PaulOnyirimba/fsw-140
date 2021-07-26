@@ -5,7 +5,7 @@ const mysql = require("mysql")
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
+    password: 'password',
     // connect to the default database
     database: '15Jul21'
 });
@@ -34,7 +34,7 @@ app.get('/createdb', (req, res) => {
 
 // Create a new table
 app.get('/createtable', (req, res) => {
-    let sql = "CREATE TABLE postings (id INT AUTO_INCREMENT, title VARCHAR(50), message VARCHAR(50), message VARCHAR(50), PRIMARY KEY(id))";
+    let sql = "CREATE TABLE postings (id INT AUTO_INCREMENT, title VARCHAR(50), message VARCHAR(50), PRIMARY KEY(id))";
     // execute the sql query
     db.query(sql, (err, result) => {
         if (err){
@@ -42,7 +42,8 @@ app.get('/createtable', (req, res) => {
         }
         console.log(result);
         console.log("Postings Table created successfully");
-})
+});
+});
 
 // insert a new record
 app.get('/insertrow1', (req, res) => {
@@ -81,11 +82,12 @@ app.get('/getposts/:id', (req, res) => {
         console.log(result);
         console.log("Record Retrieved successfully");
 })
+})
 
 // UPDATE Command
 
 
 // open default port and listen for connection
-app.listen('3000', () => {
+app.listen(3000, () => {
     console.log("local web server is running");
 });
